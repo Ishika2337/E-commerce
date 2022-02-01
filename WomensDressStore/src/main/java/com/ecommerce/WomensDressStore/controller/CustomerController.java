@@ -28,16 +28,14 @@ public class CustomerController {
         String name = request.getParameter("name");
         String address = request.getParameter("address");
         String password = request.getParameter("password");
+        Customer customer;
         if(username.equals("admin")){
-//            customer.setRoles("admin");
-            Customer customer = new Customer(username,name,address,password,"admin");
-            customerService.createCustomer(customer);
+            customer = new Customer(username, name, address, password, "admin");
         }
         else {
-//            customer.setRoles("user");
-            Customer customer = new Customer(username,name,address,password,"user");
-            customerService.createCustomer(customer);
+            customer = new Customer(username, name, address, password, "user");
         }
+        customerService.createCustomer(customer);
 
         return "showdresses";
     }
