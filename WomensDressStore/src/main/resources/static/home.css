@@ -1,0 +1,121 @@
+header{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    overflow: hidden;
+    height: 30%;
+    padding: 5px;
+    padding-left: 30px;
+    background-color: 	rgb(15, 11, 11);
+}
+header > .heading{
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    width: 40%;
+}
+.imgw{
+    width: 28%;
+}
+.imgs{
+    height: 120px;
+    width: 400px;
+    position: relative;
+}
+#heading-animation{
+    position: relative;
+    animation-name: headinganimation;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+
+}
+@keyframes headinganimation{
+    0%{color: rgb(245, 245, 245);}
+    15%{color: rgb(117, 117, 117) ;}
+    30%{color: rgb(77, 77, 77);}
+    45%{color: rgb(56, 56, 56);}
+    60%{color: rgb(77, 77, 77);}
+    75%{color: rgb(117, 117, 117);}
+    90%{color: rgb(245, 245, 245);}
+}
+.navbar{
+    margin-bottom: 0px;
+}
+nav > ul > li{
+    margin-right: 30px;
+    margin-left: 50px;
+}
+nav > ul > li > .active{
+    color: rgb(98, 133, 121)
+}
+
+.nav-link{
+    color: black;
+}
+.nav-link:hover{
+    color: white;
+}
+.back{
+    background-image: url("/images/bb5.jpg");
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.slogan{
+    margin: 0% 0% 0% 13%;
+    text-align: center;
+    padding: 19% 19%;
+    width: 70%;
+}
+.slogan > h1{
+    color: whitesmoke;
+}
+#about-us, #contact-us{
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+}
+#about-us > div{
+    width: 45%;
+    margin: 1%;
+}
+.about-us-video{
+    width: 600px;
+    height: 500px;
+    border: hidden;
+}
+#contact-us{
+    padding-bottom: 5%;
+}
+#contact-us > div{
+    width: 45%;
+    margin: 1%;
+    height: 500px;
+}
+.contact-us-img{
+    background-image: url("/images/contact_us_2.jpg");
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.contact-us-img > div{
+    margin-top: 30%;
+    margin-left: 10%;
+    width: 60%;
+}
+.form-box{
+    background-color: #f2f2f2;
+    padding: 4%;
+}
+form > .input-width{
+    width: 80%;
+}
