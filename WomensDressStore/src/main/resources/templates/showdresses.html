@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,19 +44,24 @@
         <li class="nav-item">
             <a class="nav-link active" href="#">Show Dresses</a>
         </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
         <li class="nav-item">
-            <a class="nav-link" href="#">login</a>
+            <a class="nav-link" href="#" th:text="${username}"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/">Logout</a>
         </li>
     </ul>
 </nav>
 
-<div class="product-container">
+<div class="product-container" >
     <div class="product">
         <div class="img-box">
             <img class="imgb" src="images/iw1.jpg" alt="">
         </div>
         <div class="info">
-            <h4> <a class="colour" href="indian-wear.html">Indian Wear</a></h4>
+            <h4> <a class="colour" th:href="@{/{username}/indianWear (username=${username})}">Indian Wear</a></h4>
         </div>
     </div>
 
@@ -65,7 +70,7 @@
             <img class="imgb wid" src="images/ww2.jpg" alt="">
         </div>
         <div class="info">
-            <h4> <a class="colour" href="Western-wear.html">Western Wear</a></h4>
+            <h4> <a class="colour" th:href="@{/{username}/westernWear (username=${username})}">Western Wear</a></h4>
         </div>
     </div>
 </div>

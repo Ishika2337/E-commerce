@@ -13,4 +13,10 @@ public class CustomerService {
     public Customer createCustomer(Customer customer){
         return customerRepository.save(customer);
     }
+    public Customer getByUsername(String username){
+        return customerRepository.getById(username);
+    }
+    public Boolean existsByUsername(String username){
+        return customerRepository.existsById(username);
+    }
 }

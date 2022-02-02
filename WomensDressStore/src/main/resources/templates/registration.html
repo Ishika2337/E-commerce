@@ -37,19 +37,22 @@
     <nav class="navbar navbar-expand-sm">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/home">Home</a>
+                <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/showdresses">Show Dresses</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">login</a>
+                <a class="nav-link" href="/login">login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Registration</a>
             </li>
         </ul>
     </nav>
 
     <div class="signin-form">
-                <form action="/registration" method="post">
+                <form action="/login" method="post">
                     <div class="mb-3 mt-3">
                         <label for="username" class="form-label">User Name</label>
                         <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
