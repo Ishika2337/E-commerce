@@ -55,12 +55,15 @@
 <div class="product-container">
     <div class="product" th:each="dress: ${indianWear}">
         <div class="img-box">
-            <img class="imgb" src="/images/iw1.jpg" alt="">
+            <img class="imgb" th:src="@{${dress.dressUrl}}" alt="">
         </div>
         <div class="info">
             <h4>Brand <span th:text="${dress.brand}"/></h4>
             <div class="price"><b th:text="${dress.cost}"></b></div>
         </div>
+<!--        <div class="info">-->
+<!--            <h4> <span th:text="${dress.dressUrl}"/></h4>-->
+<!--        </div>-->
         <a href="#" class="btn btn-success">Buy It Now</a>
     </div>
 
