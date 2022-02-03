@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
   <meta charset="UTF-8">
   <title>Women's Dress Store</title>
@@ -52,8 +52,13 @@
   </nav>
 
   <div class="signin-form">
-    <div><span th:text="${message}"/></div>
-    <form action="/showdresses" method="post">
+    <div th:if="${param.error}">
+      Invalid username and password.
+    </div>
+    <div th:if="${param.logout}">
+      You have been logged out.
+    </div>
+    <form th:action="@{/showdresses}" method="post">
       <div class="mb-3 mt-3">
         <label for="username" class="form-label">Username</label>
         <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">

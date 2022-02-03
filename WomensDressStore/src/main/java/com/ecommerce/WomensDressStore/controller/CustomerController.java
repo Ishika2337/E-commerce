@@ -63,11 +63,11 @@ public class CustomerController {
                 model.addAttribute("username",username);
             }else {
                 model.addAttribute("message", "Wrong Password");
-                return "login";
+                return "redirect:/login?error";
             }
         } else {
             model.addAttribute("message", "Please enter valid User Name");
-            return "login";
+            return "redirect:/login?error";
         }
         return "showdresses";
     }
