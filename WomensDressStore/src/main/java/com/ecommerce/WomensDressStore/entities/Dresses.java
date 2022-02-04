@@ -3,23 +3,33 @@ package com.ecommerce.WomensDressStore.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
-public class WesternWear {
+public class Dresses {
     @Id
     @GeneratedValue
     private Long id;
     private String brand;
     private String dressUrl;
     private Double cost;
-    public WesternWear() {
-    }
+    private String dressType;
 
-    public WesternWear(String brand, String dressUrl, Double cost) {
+    public Dresses(String brand, String dressUrl, Double cost, String type) {
         this.brand = brand;
         this.dressUrl = dressUrl;
         this.cost = cost;
+        this.dressType = type;
+    }
+
+    public Dresses() {
+    }
+
+    public String getDressType() {
+        return dressType;
+    }
+
+    public void setDressType(String dressType) {
+        this.dressType = dressType;
     }
 
     public Long getId() {
