@@ -20,4 +20,12 @@ public class WesternWearService {
     public List<WesternWear> westernWearList(){
         return westernWearRepository.findAll();
     }
+
+    public Boolean existsByWesternWearId(Long id){
+        return westernWearRepository.existsById(id);
+    }
+
+    public WesternWear getById(Long id) {
+        return westernWearRepository.getById(id);
+    }
 }

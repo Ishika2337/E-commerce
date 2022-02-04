@@ -3,6 +3,8 @@ package com.ecommerce.WomensDressStore.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -14,6 +16,9 @@ public class Customer {
     private String password;
     private String roles;
 
+    @OneToMany(mappedBy = "customer")
+    private List<Cart> cart;
+
     public Customer() {
     }
 
@@ -23,6 +28,14 @@ public class Customer {
         this.address = address;
         this.password = password;
         this.roles = roles;
+    }
+
+    public List<Cart> getCart() {
+        return cart;
+    }
+
+    public void setCart(List<Cart> cart) {
+        this.cart = cart;
     }
 
     public String getUsername() {

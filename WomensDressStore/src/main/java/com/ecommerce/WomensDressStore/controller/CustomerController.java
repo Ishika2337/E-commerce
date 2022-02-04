@@ -2,7 +2,6 @@ package com.ecommerce.WomensDressStore.controller;
 
 import com.ecommerce.WomensDressStore.entities.Customer;
 import com.ecommerce.WomensDressStore.service.CustomerService;
-import com.ecommerce.WomensDressStore.service.DressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
-    @Autowired
-    private DressService dressService;
+
 
     //HOME
     @GetMapping("/")
@@ -63,11 +61,11 @@ public class CustomerController {
                 model.addAttribute("username",username);
             }else {
                 model.addAttribute("message", "Wrong Password");
-                return "redirect:/login?error";
+                return "login";
             }
         } else {
             model.addAttribute("message", "Please enter valid User Name");
-            return "redirect:/login?error";
+            return "login";
         }
         return "showdresses";
     }

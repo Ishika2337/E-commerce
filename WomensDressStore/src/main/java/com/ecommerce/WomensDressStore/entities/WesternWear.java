@@ -13,9 +13,6 @@ public class WesternWear {
     private String brand;
     private String dressUrl;
     private Double cost;
-    @ManyToOne
-    private Dress dress;
-
     public WesternWear() {
     }
 
@@ -23,14 +20,6 @@ public class WesternWear {
         this.brand = brand;
         this.dressUrl = dressUrl;
         this.cost = cost;
-    }
-
-    public Dress getDress() {
-        return dress;
-    }
-
-    public void setDress(Dress dress) {
-        this.dress = dress;
     }
 
     public Long getId() {

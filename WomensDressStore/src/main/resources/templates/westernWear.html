@@ -41,8 +41,14 @@
             <a class="nav-link" href="/">Home</a>
         </li>
 
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link active" href="/showdress">Show Dresses</a>-->
+<!--        </li>-->
         <li class="nav-item">
-            <a class="nav-link active" href="/showdress">Show Dresses</a>
+            <a class="nav-link" th:href="@{/{username}/indianWear (username=${username})}">Indian Wear</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" th:href="@{/{username}/westernWear (username=${username})}">Western Wear</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#" th:text="${username}"></a>
@@ -55,7 +61,7 @@
 <div class="product-container">
     <div class="product" th:each="dress: ${westernWear}">
         <div class="img-box">
-            <img class="imgb" src="/images/iw1.jpg" alt="">
+            <img class="imgb" th:src="@{${dress.dressUrl}}" alt="">
         </div>
         <div class="info">
             <h4>Brand <span th:text="${dress.brand}"/></h4>
