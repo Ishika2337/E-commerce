@@ -3,6 +3,8 @@ package com.ecommerce.WomensDressStore.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Dresses {
@@ -13,6 +15,8 @@ public class Dresses {
     private String dressUrl;
     private Double cost;
     private String dressType;
+    @OneToMany(mappedBy = "dresses")
+    private List<Cart> cart;
 
     public Dresses(String brand, String dressUrl, Double cost, String type) {
         this.brand = brand;
@@ -22,6 +26,14 @@ public class Dresses {
     }
 
     public Dresses() {
+    }
+
+    public List<Cart> getCart() {
+        return cart;
+    }
+
+    public void setCart(List<Cart> cart) {
+        this.cart = cart;
     }
 
     public String getDressType() {

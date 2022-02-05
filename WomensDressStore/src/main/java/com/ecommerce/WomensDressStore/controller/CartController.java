@@ -21,7 +21,8 @@ public class CartController {
         model.addAttribute("username", username);
         Dresses dresses = dressesService.getById(id);
         model.addAttribute("dress", dresses);
-        Cart cart = new Cart(dresses.getBrand(), dresses.getDressUrl(), dresses.getCost());
+        Cart cart = new Cart();
+        cart.setDresses(dresses);
         cartService.addToCard(cart);
         return "cart";
     }
