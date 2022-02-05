@@ -13,7 +13,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!--style sheet-->
     <link rel="stylesheet" type="text/css" href="/home.css">
-    <link rel="stylesheet" type="text/css" href="/registration.css">
     <link rel="stylesheet" type="text/css" href="/dress.css">
 
 </head>
@@ -41,14 +40,17 @@
             <a class="nav-link" href="/">Home</a>
         </li>
 
-<!--        <li class="nav-item">-->
-<!--            <a class="nav-link active" href="/showdress">Show Dresses</a>-->
-<!--        </li>-->
+        <!--        <li class="nav-item">-->
+        <!--            <a class="nav-link active" href="/showdress">Show Dresses</a>-->
+        <!--        </li>-->
         <li class="nav-item">
             <a class="nav-link" th:href="@{/{username}/indianWear (username=${username})}">Indian Wear</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" th:href="@{/{username}/westernWear (username=${username})}">Western Wear</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/{username}/cart (username=${username})}">My Cart</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#" th:text="${username}"></a>
@@ -67,7 +69,11 @@
             <h4>Brand <span th:text="${dress.brand}"/></h4>
             <div class="price"><b th:text="${dress.cost}"></b></div>
         </div>
-        <a href="#" class="btn btn-success">Buy It Now</a>
+        <div class="info">
+            <a href="#" class="btn btn-success">Buy</a>
+            <a th:href="@{/{username}/cart/{id} (username=${username},id=${dress.id})}" class="btn btn-success">Add To
+                Cart</a>
+        </div>
     </div>
 
 

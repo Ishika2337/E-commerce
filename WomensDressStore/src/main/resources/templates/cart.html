@@ -1,10 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Site</title>
+    <!--Bootstrap Link-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--style sheet-->
+    <link rel="stylesheet" type="text/css" href="/home.css">
+    <link rel="stylesheet" type="text/css" href="/dress.css">
+
 </head>
 <body>
-<h1>Cart</h1>
+<!--header-->
+<header>
+
+    <div class="imgw">
+        <img class="imgs img-responsive" src="images/shop1.jpg" alt="shopping image">
+    </div>
+
+    <div class="heading" id="heading-animation">
+        WELCOME TO WOMEN'S DRESS STORE
+    </div>
+
+    <div class="imgw">
+        <img class="imgs img-responsive" src="images/shop2.jpg" alt="shopping img">
+    </div>
+
+</header>
+
+<nav class="navbar navbar-expand-sm">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+        </li>
+
+        <!--        <li class="nav-item">-->
+        <!--            <a class="nav-link active" href="/showdresses">Show Dresses</a>-->
+        <!--        </li>-->
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/{username}/indianWear (username=${username})}">Indian Wear</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/{username}/westernWear (username=${username})}">Western Wear</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#">My Cart</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" th:text="${username}"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/">Logout</a>
+        </li>
+    </ul>
+</nav>
+<div class="product-container">
+    <div class="product" th:each="cart: ${myCart}">
+        <div class="img-box">
+            <img class="imgb" th:src="@{${cart.dresses.dressUrl}}" alt="">
+        </div>
+        <div class="info">
+            <h4>Brand <span th:text="${cart.dresses.brand}"/></h4>
+            <div class="price"><b th:text="${cart.dresses.cost}"></b></div>
+        </div>
+        <div class="info">
+            <a href="#" class="btn btn-success">Buy</a>
+            <a th:href="@{/cart/{cartId}/{username} (cartId=${cart.id},username=${username})}" class="btn btn-success">Remove from Cart</a>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

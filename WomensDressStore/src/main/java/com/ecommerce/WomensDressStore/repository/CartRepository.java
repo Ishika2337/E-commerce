@@ -3,5 +3,9 @@ package com.ecommerce.WomensDressStore.repository;
 import com.ecommerce.WomensDressStore.entities.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CartRepository extends JpaRepository<Cart,Long> {
+import java.util.List;
+
+public interface CartRepository extends JpaRepository<Cart, Long> {
+    public List<Cart> findByCustomerUsername(String username);
+//    public Cart deleteByDressesId(Long id);
 }

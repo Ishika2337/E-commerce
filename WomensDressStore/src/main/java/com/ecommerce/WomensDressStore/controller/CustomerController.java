@@ -70,11 +70,8 @@ public class CustomerController {
         return "showdresses";
     }
 
-
-
-
     @GetMapping("/showdresses")
-    public String showDresses(){
+    public String showDresses(Model model){
         return "showdresses";
     }
 }
