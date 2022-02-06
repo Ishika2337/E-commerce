@@ -22,4 +22,15 @@ public class CartService {
         cartRepository.deleteById(id);
     }
 
+    public boolean existsByDressesId(Long id) {
+        return cartRepository.existsByDressesId(id);
+    }
+
+    public Cart findByDressesId(Long id) {
+        return cartRepository.findByDressesId(id);
+    }
+//    public void removeByDressId(Long id) {
+//        cartRepository.deleteAllByDressesId(id);
+//    }
+
 }

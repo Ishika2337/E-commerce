@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Shopping Site</title>
+    <title>Women's Dress Store</title>
     <!--Bootstrap Link-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--font awesome Link-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!--style sheet-->
     <link rel="stylesheet" type="text/css" href="/home.css">
 
@@ -40,25 +42,27 @@
     <nav class="navbar navbar-expand-sm">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="#">Home</a>
+                <a class="nav-link active" href="#">
+                    <span class="fa fa-home"> Home</span>
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/showdresses">Show Dresses</a>
+                <a class="nav-link" href="/showdresses"> <span class="fas fa-shopping-bag"> Show Dresses</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#about-us">About Us</a>
+                <a class="nav-link" href="#about-us"><span class="fas fa-info"> Abouts Us </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#contact-us">Contact Us</a>
+                <a class="nav-link" href="#contact-us"><span class="fas fa-address-card"> Contact Us </span></a>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-item">
-                <a class="nav-link" href="/login">login</a>
+                <a class="nav-link" href="/login"> <span class="fas fa-sign-in-alt"> login </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/registration">Registration</a>
+                <a class="nav-link" href="/registration"> <span class="fas fa-user-plus"> Registration</span></a>
             </li>
         </ul>
     </nav>
@@ -79,7 +83,7 @@
     </div>
 
     <div>
-<!--        <video class="about-us-video" src="videos/1.mp4" controls=""></video>-->
+        <video class="about-us-video" src="videos/shoppingVideo.mp4" controls=""></video>
     </div>
 
 </div>
@@ -96,17 +100,7 @@
     </div>
 
     <div class="form-box">
-        <form action="#" method="GET">
-            NAME: <br> <input class="input-width" type="text" placeholder=" Full Name" required>
-            <br><br>
-            EMAIL ADDRESS: <br> <input class="input-width" type="email" placeholder="Email Address" required>
-            <br><br>
-            SUBJECT: <br> <input class="input-width" type="text" placeholder="Subject" required>
-            <br><br>
-            MESSAGE: <br> <textarea name="Write Message" class="input-width" cols="50" rows="5" placeholder="Write your problems"></textarea>
-            <br><br>
-
-            <input type="submit" class="btn btn-success" value="submit">
+        <img class="img-responsive" src="images/contactUs.jpg"/>
 
         </form>
     </div>

@@ -43,17 +43,14 @@
             <a class="nav-link" href="/"><span class="fa fa-home"> Home</span></a>
         </li>
 
+        <!--        <li class="nav-item">-->
+        <!--            <a class="nav-link active" href="/showdress">Show Dresses</a>-->
+        <!--        </li>-->
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/{username}/indianWear (username=${username})}"><span class="fa"> Indian Wear</span></a>
+            <a class="nav-link" href="/addDresses"><span class="fa"> Add Dress</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" th:href="@{/{username}/westernWear (username=${username})}"><span class="fa"> Western Wear </span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/{username}/cart (username=${username})}"><span class="fa fa-shopping-cart"> My Cart </span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" th:text="${username}"></a>
+            <a class="nav-link active" href="#"><span class="fas fa-tshirt"> Dresses</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/"><span class="fas fa-sign-out-alt"> Logout</span></a>
@@ -61,7 +58,7 @@
     </ul>
 </nav>
 <div class="product-container">
-    <div class="product" th:each="dress: ${westernWear}">
+    <div class="product" th:each="dress: ${allDresses}">
         <div class="img-box">
             <img class="imgb" th:src="@{${dress.dressUrl}}" alt="">
         </div>
@@ -70,9 +67,8 @@
             <div class="price">₹<b th:text="${dress.cost}"></b></div>
         </div>
         <div class="info">
-            <a href="#" class="btn btn-success">Buy</a>
-            <a th:href="@{/{username}/cart/{id} (username=${username},id=${dress.id})}" class="btn btn-success">Add To
-                Cart</a>
+            <a th:href="@{/{id}/update (id=${dress.id})}" class="btn btn-success">Update</a>
+            <a th:href="@{/{id}/delete (id=${dress.id})}" class="btn btn-success">Delete</a>
         </div>
     </div>
 

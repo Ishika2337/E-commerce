@@ -43,36 +43,43 @@
         <a class="nav-link" href="/"><span class="fa fa-home"> Home</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/showdresses"><span class="fas fa-shopping-bag"> Show Dresses</span></a>
+        <a class="nav-link" href="/addDresses"><span class="fa"> Add Dress</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="#"><span class="fas fa-sign-in-alt"> login </span></a>
+        <a class="nav-link" href="/allDresses"><span class="fas fa-tshirt"> Dresses</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/registration"><span class="fas fa-user-plus"> Registration</span></a>
+        <a class="nav-link" href="/"><span class="fas fa-sign-out-alt"> Logout</span></a>
       </li>
     </ul>
   </nav>
 
   <div class="signin-form">
-<!--    <div th:if="${param.error}">-->
-<!--      Invalid username and password.-->
-<!--    </div>-->
-<!--    <div th:if="${param.logout}">-->
-<!--      You have been logged out.-->
-<!--    </div>-->
-    <form th:action="@{/showdresses}" method="post">
+    <h4 class="d-flex justify-content-center">Update Dress</h4>
+    <form th:action="@{/{id}/update (id=${dress.id})}" method="post">
+      <span th:text="${msg}"/>
       <div class="mb-3 mt-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+        <label for="dressUrl" class="form-label">Dress</label>
+        <input type="text" class="form-control" id="dressUrl" placeholder="Enter dress" name="dressUrl" th:value="${dress.dressUrl}" />
       </div>
-
       <div class="mb-3">
-        <label for="password" class="form-label">Password:</label>
-        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+        <label for="brand" class="form-label">Brand:</label>
+        <input type="text" class="form-control" id="brand" placeholder="Enter brand" name="brand" th:value="${dress.brand}" />
+      </div>
+      <div class="mb-3">
+        <label for="cost" class="form-label">Cost:</label>
+        <input type="text" class="form-control" id="cost" placeholder="Enter address" name="cost" th:value="${dress.cost}">
+      </div>
+      <div class="mb-3">
+        <label for="dressType">Choose a Type:</label>
+
+        <select id="dressType" name="dressType">
+          <option value="indianWear" name="indianWear">Indian Wear</option>
+          <option value="westernWear" name="westernWear">Western Wear</option>
+        </select>
       </div>
 
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit" class="btn btn-primary">Update</button>
     </form>
   </div>
 </div>

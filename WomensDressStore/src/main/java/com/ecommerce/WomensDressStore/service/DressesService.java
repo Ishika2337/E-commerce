@@ -22,4 +22,12 @@ public class DressesService {
     public Dresses getById(Long id) {
         return dressesRepository.getById(id);
     }
+
+    public List<Dresses> allDresses() {
+        return dressesRepository.findAll();
+    }
+
+    public void remove(Long id) {
+        dressesRepository.deleteById(id);
+    }
 }

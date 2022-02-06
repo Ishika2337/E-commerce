@@ -24,6 +24,7 @@ body{
 .info{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 .product-container > .product > .info > h4{
     width: 70%;
