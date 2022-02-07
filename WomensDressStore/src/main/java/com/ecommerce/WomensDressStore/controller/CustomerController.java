@@ -27,7 +27,7 @@ public class CustomerController {
     public String registrationForm(){
         return "registration";
     }
-    @PostMapping("/login")
+    @PostMapping("/registration")
     public String registration(HttpServletRequest request){
         String username = request.getParameter("username");
         String name = request.getParameter("name");
@@ -41,7 +41,7 @@ public class CustomerController {
             customer = new Customer(username, name, address, password, "user");
         }
         customerService.createCustomer(customer);
-        return "login";
+        return "redirect:/login";
     }
 
     //LOGIN
@@ -50,7 +50,7 @@ public class CustomerController {
         return "login";
     }
 
-    @PostMapping("/showdresses")
+    @PostMapping("/login")
     public String login(HttpServletRequest request, Model model){
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -67,7 +67,7 @@ public class CustomerController {
             model.addAttribute("message", "Please enter valid User Name");
             return "login";
         }
-        return "showdresses";
+        return "redirect:/showdresses";
     }
 
     @GetMapping("/showdresses")

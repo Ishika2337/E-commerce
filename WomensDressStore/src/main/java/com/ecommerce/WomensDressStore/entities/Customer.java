@@ -19,6 +19,8 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Cart> cart;
 
+    @OneToMany(mappedBy = "customer")
+    private List<MyOrder> myOrders;
     public Customer() {
     }
 
@@ -28,6 +30,14 @@ public class Customer {
         this.address = address;
         this.password = password;
         this.roles = roles;
+    }
+
+    public List<MyOrder> getOrders() {
+        return myOrders;
+    }
+
+    public void setOrders(List<MyOrder> myOrders) {
+        this.myOrders = myOrders;
     }
 
     public List<Cart> getCart() {
