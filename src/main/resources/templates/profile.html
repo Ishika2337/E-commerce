@@ -12,16 +12,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!--font awesome Link-->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
     <!--style sheet-->
     <link rel="stylesheet" type="text/css" href="/home.css">
-    <link rel="stylesheet" type="text/css" href="/showDresses.css">
-
+    <link rel="stylesheet" type="text/css" href="/dress.css">
 
 </head>
 <body>
-<!--header-->
 <header>
 
     <div class="imgw">
@@ -44,7 +43,7 @@
             <a class="nav-link" href="/"><span class="fa fa-home"> Home</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="#"><span class="fas fa-shopping-bag"> Show Dresses</span></a>
+            <a class="nav-link" href="#"><span class="fas fa-shopping-bag"> Show Dresses</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" th:href="@{/myOrder}"><span class="fa"> My Orders </span></a>
@@ -55,31 +54,25 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/profile}" th:text="${username}"></a>
+            <a class="nav-link" href="#" th:text="${username}"></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/logout"><span class="fas fa-sign-out-alt"> Logout</span></a>
         </li>
     </ul>
 </nav>
+<div class="container">
 
-<div class="product-container" >
-    <div class="product">
-        <div class="img-box">
-            <img class="imgb" src="images/iw1.jpg" alt="">
-        </div>
-        <div class="info">
-            <h4> <a class="colour" th:href="@{/indianWear}">Indian Wear</a></h4>
-        </div>
-    </div>
+<!--    <div class="text-center">-->
+<!--        <span th:text="${message}"/>-->
+<!--    </div>-->
 
-    <div class="product">
-        <div class="img-box">
-            <img class="imgb wid" src="images/ww2.jpg" alt="">
-        </div>
-        <div class="info">
-            <h4> <a class="colour" th:href="@{/westernWear}">Western Wear</a></h4>
-        </div>
+    <h3 class="mb-2">Details of <span th:text="${customer.name}"/></h3>
+    <p>User Name: <span th:text="${customer.username}"/></p>
+    <p>Name: <span th:text="${customer.name}"/></p>
+    <p>Address: <span th:text="${customer.address}"/></p>
+    <div class="container">
+<!--        <a th:href="@{/updateCustomer/{id} (id=${userName})}" class="btn btn-primary ">Update</a>-->
     </div>
 </div>
 </body>

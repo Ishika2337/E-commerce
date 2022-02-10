@@ -51,25 +51,7 @@ public class CustomerController {
         return "login";
     }
 
-//    @PostMapping("/login")
-//    public String login(HttpServletRequest request, Model model){
-//        String username = request.getParameter("username");
-//        String password = request.getParameter("password");
-//        Customer customer;
-//        if (customerService.existsByUsername(username)){
-//            customer = customerService.getByUsername(username);
-//            if (password.equals(customer.getPassword())){
-//                model.addAttribute("username",username);
-//                return "redirect:/showdresses";
-//            } else {
-//                model.addAttribute("message", "Wrong Password");
-//                return "login";
-//            }
-//        } else {
-//            model.addAttribute("message", "Please enter valid User Name");
-//            return "login";
-//        }
-//    }
+
     @GetMapping("/success")
     public String login(Principal principal){
         String username = principal.getName();
@@ -79,8 +61,23 @@ public class CustomerController {
         return "redirect:/showdresses";
     }
 
+    //View Profile
+    @GetMapping("/profile")
+    public String profile(Principal principal, Model model){
+        if (principal != null) {
+            String username = principal.getName();
+            model.addAttribute("username", username);
+        }
+        model.addAttribute("customer",customerService.getByUsername(principal.getName()));
+        return "profile";
+    }
+
     @GetMapping("/showdresses")
-    public String showDresses(){
+    public String showDresses(Principal principal, Model model){
+        if (principal != null) {
+            String username = principal.getName();
+            model.addAttribute("username", username);
+        }
         return "showdresses";
     }
 }
