@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 
 @Controller
 public class CustomerController {
@@ -35,13 +36,13 @@ public class CustomerController {
         String password = request.getParameter("password");
         Customer customer;
         if(username.equals("admin")){
-            customer = new Customer(username, name, address, password, "admin");
+            customer = new Customer(username, name, address, password, "ROLE_ADMIN");
         }
         else {
-            customer = new Customer(username, name, address, password, "user");
+            customer = new Customer(username, name, address, password, "ROLE_USER");
         }
         customerService.createCustomer(customer);
-        return "redirect:/login";
+        return "redirect:/showdresses";
     }
 
     //LOGIN
@@ -50,28 +51,36 @@ public class CustomerController {
         return "login";
     }
 
-    @PostMapping("/login")
-    public String login(HttpServletRequest request, Model model){
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        Customer customer;
-        if (customerService.existsByUsername(username)){
-            customer = customerService.getByUsername(username);
-            if (password.equals(customer.getPassword())){
-                model.addAttribute("username",username);
-            }else {
-                model.addAttribute("message", "Wrong Password");
-                return "login";
-            }
-        } else {
-            model.addAttribute("message", "Please enter valid User Name");
-            return "login";
+//    @PostMapping("/login")
+//    public String login(HttpServletRequest request, Model model){
+//        String username = request.getParameter("username");
+//        String password = request.getParameter("password");
+//        Customer customer;
+//        if (customerService.existsByUsername(username)){
+//            customer = customerService.getByUsername(username);
+//            if (password.equals(customer.getPassword())){
+//                model.addAttribute("username",username);
+//                return "redirect:/showdresses";
+//            } else {
+//                model.addAttribute("message", "Wrong Password");
+//                return "login";
+//            }
+//        } else {
+//            model.addAttribute("message", "Please enter valid User Name");
+//            return "login";
+//        }
+//    }
+    @GetMapping("/success")
+    public String login(Principal principal){
+        String username = principal.getName();
+        if (username.equals("admin")){
+            return "redirect:/addDresses";
         }
         return "redirect:/showdresses";
     }
 
     @GetMapping("/showdresses")
-    public String showDresses(Model model){
+    public String showDresses(){
         return "showdresses";
     }
 }

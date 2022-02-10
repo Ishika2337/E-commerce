@@ -7,8 +7,12 @@ import com.ecommerce.WomensDressStore.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.security.Principal;
+
 @Controller
 public class CartController {
     @Autowired
@@ -18,27 +22,37 @@ public class CartController {
     @Autowired
     private DressesService dressesService;
 
-    @GetMapping("/{username}/cart/{id}")
-    public String cart(@PathVariable String username, @PathVariable Long id, Model model) {
-        model.addAttribute("username", username);
+    @GetMapping("/cart/{id}")
+    public String cart(Principal principal, @PathVariable Long id, Model model) {
+        if (principal != null) {
+            String username = principal.getName();
+            model.addAttribute("username", username);
+        }
         Dresses dresses = dressesService.getById(id);
-        Customer customer = customerService.getByUsername(username);
+        Customer customer = customerService.getByUsername(principal.getName());
         model.addAttribute("dress", dresses);
         Cart cart = new Cart();
         cart.setDresses(dresses);
         cart.setCustomer(customer);
         cartService.addToCard(cart);
-        return "redirect:/"+username+"/"+dresses.getDressType();
+        return "redirect:/"+dresses.getDressType();
     }
-    @GetMapping("/{username}/cart")
-    public String myCart(@PathVariable String username, Model model){
-        model.addAttribute("myCart",cartService.myCart(username));
+    @GetMapping("/cart")
+    public String myCart(Principal principal, Model model){
+        if (principal != null) {
+            String username = principal.getName();
+            model.addAttribute("username", username);
+        }
+        model.addAttribute("myCart",cartService.myCart(principal.getName()));
         return "cart";
     }
-    @GetMapping("/cart/{cartId}/{username}")
-    public String removeFromCart(@PathVariable Long cartId,@PathVariable String username,Model model){
-        model.addAttribute("username",username);
+    @GetMapping("/myCart/{cartId}")
+    public String removeFromCart(@PathVariable Long cartId, Model model, Principal principal){
+        if (principal != null) {
+            String username = principal.getName();
+            model.addAttribute("username", username);
+        }
         cartService.remove(cartId);
-        return "redirect:/"+username+"/cart";
+        return "redirect:/cart";
     }
 }

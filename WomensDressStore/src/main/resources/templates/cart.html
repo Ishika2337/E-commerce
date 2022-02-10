@@ -43,23 +43,26 @@
             <a class="nav-link" href="/"><span class="fa fa-home"> Home</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/{username}/indianWear (username=${username})}">
+            <a class="nav-link" th:href="@{/indianWear}">
                 <span class="fa"> Indian Wear </span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/{username}/westernWear (username=${username})}">
+            <a class="nav-link" th:href="@{/westernWear}">
                 <span class="fa"> Western Wear </span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="#"><span class="fa fa-shopping-cart"> My Cart </span></a>
+            <a class="nav-link" th:href="@{/myOrder}"><span class="fa"> My Orders </span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" th:href="@{/cart}"><span class="fa fa-shopping-cart"> My Cart </span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#" th:text="${username}"></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/"><span class="fas fa-sign-out-alt"> Logout</span></a>
+            <a class="nav-link" href="/logout"><span class="fas fa-sign-out-alt"> Logout</span></a>
         </li>
     </ul>
 </nav>
@@ -73,8 +76,8 @@
             <div class="price">₹<b th:text="${cart.dresses.cost}"></b></div>
         </div>
         <div class="info">
-            <a href="#" class="btn btn-success">Buy</a>
-            <a th:href="@{/cart/{cartId}/{username} (cartId=${cart.id},username=${username})}" class="btn btn-success">Remove from Cart</a>
+            <a th:href="@{/buy/{id} (id=${cart.dresses.id})}" class="btn btn-success">Buy</a>
+            <a th:href="@{/myCart/{cartId} (cartId=${cart.id})}" class="btn btn-success">Remove from Cart</a>
         </div>
     </div>
 </div>

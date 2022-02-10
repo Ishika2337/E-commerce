@@ -43,38 +43,41 @@
             <a class="nav-link" href="/"><span class="fa fa-home"> Home</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/{username}/indianWear (username=${username})}">
+            <a class="nav-link" th:href="@{/indianWear}">
                 <span class="fa"> Indian Wear </span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/{username}/westernWear (username=${username})}">
+            <a class="nav-link" th:href="@{/westernWear}">
                 <span class="fa"> Western Wear </span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="#"><span class="fa fa-shopping-cart"> My Cart </span></a>
+            <a class="nav-link active" th:href="@{/myOrder}"><span class="fa"> My Orders </span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/cart}"><span class="fa fa-shopping-cart"> My Cart </span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#" th:text="${username}"></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/"><span class="fas fa-sign-out-alt"> Logout</span></a>
+            <a class="nav-link" href="/logout"><span class="fas fa-sign-out-alt"> Logout</span></a>
         </li>
     </ul>
 </nav>
 <div class="product-container">
-    <div class="product" th:each="cart: ${myCart}">
+    <div class="product" th:each="order: ${orders}">
         <div class="img-box">
-            <img class="imgb" th:src="@{${cart.dresses.dressUrl}}" alt="">
+            <img class="imgb" th:src="@{${order.dresses.dressUrl}}" alt="">
         </div>
         <div class="info">
-            <h4>Brand <span th:text="${cart.dresses.brand}"/></h4>
-            <div class="price">₹<b th:text="${cart.dresses.cost}"></b></div>
+            <h4>Brand <span th:text="${order.dresses.brand}"/></h4>
+            <div class="price">₹<b th:text="${order.dresses.cost}"></b></div>
         </div>
         <div class="info">
-            <a href="#" class="btn btn-success">Buy</a>
-            <a th:href="@{/cart/{cartId}/{username} (cartId=${cart.id},username=${username})}" class="btn btn-success">Remove from Cart</a>
+            <h5>Booked and Delivered within 2 days</h5>
+            <a th:href="@{/order/{id} (id=${order.id})}" class="btn btn-success">Cancel Order</a>
         </div>
     </div>
 </div>

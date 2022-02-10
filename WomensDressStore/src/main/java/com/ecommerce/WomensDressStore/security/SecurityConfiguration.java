@@ -2,11 +2,11 @@ package com.ecommerce.WomensDressStore.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -21,12 +21,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-//                .antMatchers("/addDress").hasRole("ADMIN")
-//                .antMatchers("/showdresses").hasRole("USER")
-//                .antMatchers("/","/registration").permitAll()
-                .antMatchers("/").hasRole("user")
-                .and().formLogin();
+        http.csrf().disable()
+        .authorizeRequests()
+                .antMatchers("/addDresses","/allDresses","/update/*").hasRole("ADMIN")
+                .antMatchers("/cart/*","/pay/*","/cart","/myOrder").hasRole("USER")
+                .antMatchers("/").permitAll()
+//                .antMatchers("/*").hasRole("USER")
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/success");
+
+
+//        http.csrf().disable()
+//                .authorizeRequests()
+//                .anyRequest().authenticated()
+//                .antMatchers("/addDress","/allDresses","/update/*").hasRole("ADMIN")
+//                .antMatchers("/cart/*").hasRole("USER")
+//                .antMatchers("/").permitAll()
+//                .and().formLogin().loginPage("/login").defaultSuccessUrl("/success");
+
+
+
  //       .authorizeRequests()
 //                .antMatchers("/", "/home","/registration").permitAll()
 //                .anyRequest().authenticated()
@@ -38,7 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .logout()
 //                .permitAll();
     }
-    @Autowired
+    @Bean
     public PasswordEncoder getPasswordEncoder(){
         return NoOpPasswordEncoder.getInstance();
     }

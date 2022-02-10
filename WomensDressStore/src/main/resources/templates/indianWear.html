@@ -42,24 +42,23 @@
         <li class="nav-item">
             <a class="nav-link" href="/"><span class="fa fa-home"> Home</span></a>
         </li>
-
-<!--        <li class="nav-item">-->
-<!--            <a class="nav-link active" href="/showdresses">Show Dresses</a>-->
-<!--        </li>-->
         <li class="nav-item">
-            <a class="nav-link active" th:href="@{/{username}/indianWear (username=${username})}"><span class="fa"> Indian Wear</span></a>
+            <a class="nav-link active" th:href="@{/indianWear}"><span class="fa"> Indian Wear</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/{username}/westernWear (username=${username})}"><span class="fa"> Western Wear </span></a>
+            <a class="nav-link" th:href="@{/westernWear}"><span class="fa"> Western Wear </span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/{username}/cart (username=${username})}"><span class="fa fa-shopping-cart"> My Cart </span></a>
+            <a class="nav-link" th:href="@{/myOrder}"><span class="fa"> My Orders </span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/cart}"><span class="fa fa-shopping-cart"> My Cart </span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#" th:text="${username}"></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/"><span class="fas fa-sign-out-alt"> Logout</span></a>
+            <a class="nav-link" href="/logout"><span class="fas fa-sign-out-alt"> Logout</span></a>
         </li>
     </ul>
 </nav>
@@ -73,8 +72,8 @@
             <div class="price">₹<b th:text="${dress.cost}"></b></div>
         </div>
         <div class="info">
-            <a href="#" class="btn btn-success">Buy</a>
-            <a th:href="@{/{username}/cart/{id} (username=${username},id=${dress.id})}" class="btn btn-success">Add To Cart</a>
+            <a th:href="@{/buy/{id} (id=${dress.id})}" class="btn btn-success">Buy</a>
+            <a th:href="@{/cart/{id} (id=${dress.id})}" class="btn btn-success">Add To Cart</a>
         </div>
     </div>
 </div>

@@ -2,8 +2,10 @@ package com.ecommerce.WomensDressStore.controller;
 
 import com.ecommerce.WomensDressStore.entities.Cart;
 import com.ecommerce.WomensDressStore.entities.Dresses;
+import com.ecommerce.WomensDressStore.entities.MyOrder;
 import com.ecommerce.WomensDressStore.service.CartService;
 import com.ecommerce.WomensDressStore.service.DressesService;
+import com.ecommerce.WomensDressStore.service.MyOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 
 @Controller
 public class DressesController {
@@ -19,6 +22,8 @@ public class DressesController {
     private DressesService dressesService;
     @Autowired
     private CartService cartService;
+    @Autowired
+    private MyOrderService myOrderService;
 
     @GetMapping("/addDresses")
     public String addDressesForm() {
@@ -43,7 +48,7 @@ public class DressesController {
         return "allDresses";
     }
 
-    @GetMapping("/{id}/update")
+    @GetMapping("/update/{id}")
     public String updateDressForm(@PathVariable Long id, Model model) {
         model.addAttribute("dress", dressesService.getById(id));
         return "updateDress";
@@ -66,20 +71,30 @@ public class DressesController {
             Cart cart = cartService.findByDressesId(id);
             cartService.remove(cart.getId());
         }
+        if (myOrderService.existsByDressesId(id)){
+            MyOrder myOrder = myOrderService.findByDressesId(id);
+            myOrderService.remove(myOrder.getId());
+        }
         dressesService.remove(id);
         return "redirect:/allDresses";
     }
 
-    @GetMapping("/{username}/indianWear")
-    public String indianWear(@PathVariable String username, Model model) {
-        model.addAttribute("username", username);
+    @GetMapping("/indianWear")
+    public String indianWear(Principal principal,Model model) {
+        if (principal != null) {
+            String username = principal.getName();
+            model.addAttribute("username", username);
+        }
         model.addAttribute("indianWear", dressesService.findByDressType("indianWear"));
         return "indianWear";
     }
 
-    @GetMapping("/{username}/westernWear")
-    public String westernWear(@PathVariable String username, Model model) {
-        model.addAttribute("username", username);
+    @GetMapping("/westernWear")
+    public String westernWear(Principal principal,Model model) {
+        if (principal != null) {
+            String username = principal.getName();
+            model.addAttribute("username", username);
+        }
         model.addAttribute("westernWear", dressesService.findByDressType("westernWear"));
         return "westernWear";
     }

@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class CartService {
     @Autowired
-    CartRepository cartRepository;
+    private CartRepository cartRepository;
 
     public Cart addToCard(Cart cart) {
         return cartRepository.save(cart);
@@ -29,8 +29,5 @@ public class CartService {
     public Cart findByDressesId(Long id) {
         return cartRepository.findByDressesId(id);
     }
-//    public void removeByDressId(Long id) {
-//        cartRepository.deleteAllByDressesId(id);
-//    }
 
 }

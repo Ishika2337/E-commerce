@@ -47,7 +47,10 @@
             <a class="nav-link active" href="#"><span class="fas fa-shopping-bag"> Show Dresses</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/{username}/cart (username=${username})}"><span class="fa fa-shopping-cart"> My Cart </span></a>
+            <a class="nav-link active" th:href="@{/myOrder}"><span class="fa"> My Orders </span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/cart}"><span class="fa fa-shopping-cart"> My Cart </span></a>
         </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -55,7 +58,7 @@
             <a class="nav-link" href="#" th:text="${username}"></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/"><span class="fas fa-sign-out-alt"> Logout</span></a>
+            <a class="nav-link" href="/logout"><span class="fas fa-sign-out-alt"> Logout</span></a>
         </li>
     </ul>
 </nav>
@@ -66,7 +69,7 @@
             <img class="imgb" src="images/iw1.jpg" alt="">
         </div>
         <div class="info">
-            <h4> <a class="colour" th:href="@{/{username}/indianWear (username=${username})}">Indian Wear</a></h4>
+            <h4> <a class="colour" th:href="@{/indianWear}">Indian Wear</a></h4>
         </div>
     </div>
 
@@ -75,7 +78,7 @@
             <img class="imgb wid" src="images/ww2.jpg" alt="">
         </div>
         <div class="info">
-            <h4> <a class="colour" th:href="@{/{username}/westernWear (username=${username})}">Western Wear</a></h4>
+            <h4> <a class="colour" th:href="@{/westernWear}">Western Wear</a></h4>
         </div>
     </div>
 </div>
