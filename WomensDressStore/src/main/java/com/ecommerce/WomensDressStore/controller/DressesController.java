@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 import java.security.Principal;
-
+@Transactional
 @Controller
 public class DressesController {
     @Autowired
@@ -68,16 +69,28 @@ public class DressesController {
     @GetMapping("/{id}/delete")
     public String deleteDress(@PathVariable Long id){
         if (cartService.existsByDressesId(id)){
-            Cart cart = cartService.findByDressesId(id);
-            cartService.remove(cart.getId());
+            cartService.remove(id);
         }
         if (myOrderService.existsByDressesId(id)){
-            MyOrder myOrder = myOrderService.findByDressesId(id);
-            myOrderService.remove(myOrder.getId());
+            myOrderService.remove(id);
         }
         dressesService.remove(id);
         return "redirect:/allDresses";
     }
+
+//    @GetMapping("/{id}/delete")
+//    public String deleteDress(@PathVariable Long id){
+//        if (cartService.existsByDressesId(id)){
+//            Cart cart = cartService.findByDressesId(id);
+//            cartService.remove(cart.getId());
+//        }
+//        if (myOrderService.existsByDressesId(id)){
+//            MyOrder myOrder = myOrderService.findByDressesId(id);
+//            myOrderService.remove(myOrder.getId());
+//        }
+//        dressesService.remove(id);
+//        return "redirect:/allDresses";
+//    }
 
     @GetMapping("/indianWear")
     public String indianWear(Principal principal,Model model) {
