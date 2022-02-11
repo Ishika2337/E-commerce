@@ -69,10 +69,10 @@ public class DressesController {
     @GetMapping("/{id}/delete")
     public String deleteDress(@PathVariable Long id){
         if (cartService.existsByDressesId(id)){
-            cartService.remove(id);
+            cartService.removeByDressesId(id);
         }
         if (myOrderService.existsByDressesId(id)){
-            myOrderService.remove(id);
+            myOrderService.removeByDressesId(id);
         }
         dressesService.remove(id);
         return "redirect:/allDresses";

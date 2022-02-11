@@ -11,5 +11,5 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
     public boolean existsByDressesId(Long id);
 
     public Cart findByDressesId(Long id);
-//    public void deleteByCustomerUsername(String id);
+    public void deleteByDressesId(Long id);
 }

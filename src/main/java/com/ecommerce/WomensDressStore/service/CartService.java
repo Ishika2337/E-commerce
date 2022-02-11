@@ -22,7 +22,7 @@ public class CartService {
     public void remove(Long id) {
         cartRepository.deleteById(id);
     }
-
+public void  removeByDressesId(Long id){cartRepository.deleteByDressesId(id);}
     public boolean existsByDressesId(Long id) {
         return cartRepository.existsByDressesId(id);
     }

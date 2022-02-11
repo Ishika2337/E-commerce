@@ -11,4 +11,5 @@ public interface MyOrderRepository extends JpaRepository<MyOrder,Long> {
     public boolean existsByDressesId(Long id);
 
     public MyOrder findByDressesId(Long id);
+    public void deleteByDressesId(Long id);
 }
