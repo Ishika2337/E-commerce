@@ -24,7 +24,7 @@ public class MyOrderController {
     private CustomerService customerService;
 
     @GetMapping("/buy/{id}")
-    public String pay(Principal principal,Model model, @PathVariable Long id){
+    public String buy(Principal principal,Model model, @PathVariable Long id){
         if (principal != null) {
             String username = principal.getName();
             model.addAttribute("username", username);
@@ -33,7 +33,7 @@ public class MyOrderController {
         return "pay";
     }
     @GetMapping("/pay/{id}")
-    public String cart(Principal principal, @PathVariable Long id, Model model) {
+    public String pay(Principal principal, @PathVariable Long id, Model model) {
         if (principal != null) {
             String username = principal.getName();
             model.addAttribute("username", username);

@@ -78,20 +78,6 @@ public class DressesController {
         return "redirect:/allDresses";
     }
 
-//    @GetMapping("/{id}/delete")
-//    public String deleteDress(@PathVariable Long id){
-//        if (cartService.existsByDressesId(id)){
-//            Cart cart = cartService.findByDressesId(id);
-//            cartService.remove(cart.getId());
-//        }
-//        if (myOrderService.existsByDressesId(id)){
-//            MyOrder myOrder = myOrderService.findByDressesId(id);
-//            myOrderService.remove(myOrder.getId());
-//        }
-//        dressesService.remove(id);
-//        return "redirect:/allDresses";
-//    }
-
     @GetMapping("/indianWear")
     public String indianWear(Principal principal,Model model) {
         if (principal != null) {
