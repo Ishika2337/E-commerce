@@ -19,7 +19,11 @@ public class CustomerController {
 
     //HOME
     @GetMapping("/")
-    public String home() {
+    public String home(Principal principal, Model model) {
+        if (principal != null) {
+            String username = principal.getName();
+            model.addAttribute("username", username);
+        }
         return "home";
     }
 
