@@ -49,6 +49,7 @@ public class CustomerController {
             customerService.createCustomer(customer);
         }else {
             model.addAttribute("error","Username already taken please choose another username");
+            return "registration";
         }
 
         return "redirect:/showdresses";
