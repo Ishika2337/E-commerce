@@ -54,7 +54,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li class="nav-item">
-            <a class="nav-link" href="#" th:text="${username}"></a>
+            <a class="nav-link" th:href="@{/profile}" th:text="${username}"></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/logout"><span class="fas fa-sign-out-alt"> Logout</span></a>
@@ -72,7 +72,7 @@
     <p>Name: <span th:text="${customer.name}"/></p>
     <p>Address: <span th:text="${customer.address}"/></p>
     <div class="container">
-<!--        <a th:href="@{/updateCustomer/{id} (id=${userName})}" class="btn btn-primary ">Update</a>-->
+        <a th:href="@{/updateProfile}" class="btn btn-primary ">Update</a>
     </div>
 </div>
 </body>
