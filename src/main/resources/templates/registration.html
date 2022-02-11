@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Women's Dress Store</title>
@@ -55,6 +55,7 @@
     </nav>
 
     <div class="signin-form">
+        <span th:text="${error}" />
                 <form action="/registration" method="post">
                     <div class="mb-3 mt-3">
                         <label for="username" class="form-label">User Name</label>

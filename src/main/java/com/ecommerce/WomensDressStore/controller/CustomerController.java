@@ -34,7 +34,7 @@ public class CustomerController {
     }
 
     @PostMapping("/registration")
-    public String registration(HttpServletRequest request) {
+    public String registration(HttpServletRequest request,Model model) {
         String username = request.getParameter("username");
         String name = request.getParameter("name");
         String address = request.getParameter("address");
@@ -45,7 +45,12 @@ public class CustomerController {
         } else {
             customer = new Customer(username, name, address, password, "ROLE_USER");
         }
-        customerService.createCustomer(customer);
+        if (!customerService.existsByUsername(username)){
+            customerService.createCustomer(customer);
+        }else {
+            model.addAttribute("error","Username already taken please choose another username");
+        }
+
         return "redirect:/showdresses";
     }
 
