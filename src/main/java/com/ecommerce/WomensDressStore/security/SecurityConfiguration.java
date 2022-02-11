@@ -14,11 +14,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyUserDetailsService userDetailsService;
+    //Authentication-- it just check username and password is correct or not
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
     }
 
+    //Authorization-- it check for roles
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
