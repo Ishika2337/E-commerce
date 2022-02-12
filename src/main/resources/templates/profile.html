@@ -67,25 +67,22 @@
     <!--    <div class="text-center">-->
     <!--        <span th:text="${message}"/>-->
     <!--    </div>-->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        Details of <span th:text="${customer.name}"/>
-                    </div>
-                    <div class="card-body">
-                        <h4>User Name: <span th:text="${customer.username}"/></h4>
-                        <h4>Name: <span th:text="${customer.name}"/></h4>
-                        <h4>Address: <span th:text="${customer.address}"/></h4>
-                    </div>
-                    <div class="card-footer">
-                        <a th:href="@{/updateProfile}" class="btn btn-primary">Update</a>
-                    </div>
+    <div class="container col d-flex justify-content-center">
+        <div class="card" style="width:500px">
+            <img class="card-img-top" src="/images/profileBg.jpg" alt="Card image" style="width:100%">
+            <div class="card-img-overlay text-center">
+                <h4 class="card-title">Details of <span th:text="${customer.name}"/></h4>
+                <h6 class="card-text">User Name: <span th:text="${customer.username}"/></h6>
+                <h6 class="card-text">Name: <span th:text="${customer.name}"/></h6>
+                <h6 class="card-text">Address: <span th:text="${customer.address}"/></h6>
+                <div class="card-footer">
+                    <a th:href="@{/updateProfile}" class="btn btn-primary">Update</a>
                 </div>
             </div>
+
         </div>
     </div>
+
 </div>
 </body>
 </html>
