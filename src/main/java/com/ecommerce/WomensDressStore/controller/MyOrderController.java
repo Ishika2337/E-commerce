@@ -45,7 +45,17 @@ public class MyOrderController {
         MyOrder myOrder = new MyOrder(dresses.getBrand(),dresses.getDressUrl(),dresses.getCost());
         myOrder.setCustomer(customer);
         myOrderService.addToMyOrder(myOrder);
-        return "redirect:/myOrder";
+        return "redirect:/successfullyBooked";
+    }
+    @GetMapping("/successfullyBooked")
+    public String booked(Principal principal, Model model){
+        if (principal != null) {
+            String username = principal.getName();
+            model.addAttribute("username", username);
+        }
+        Customer customer = customerService.getByUsername(principal.getName());
+        model.addAttribute("name", customer.getName());
+        return "booked";
     }
     @GetMapping("/myOrder")
     public String myOrder(Principal principal, Model model){
