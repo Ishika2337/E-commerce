@@ -18,7 +18,7 @@
     <!--style sheet-->
     <link rel="stylesheet" type="text/css" href="/home.css">
     <link rel="stylesheet" type="text/css" href="/dress.css">
-    <link rel="stylesheet" type="text/css" href="/style.css">
+
 
 </head>
 <body>
@@ -67,42 +67,26 @@
     <!--    <div class="text-center">-->
     <!--        <span th:text="${message}"/>-->
     <!--    </div>-->
-
-
-    <section class="wrapper">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card text-white card-has-bg click-col"
-                         style="background-image:url('https://source.unsplash.com/600x900/?tech,street');">
-                        <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="">
-                        <div class="card-img-overlay d-flex flex-column">
-                            <div class="card-body">
-                                <small class="card-meta mb-2">Details of <span th:text="${customer.name}"/></small>
-                                <h4 class="card-title mt-0 ">
-                                    User Name: <span th:text="${customer.username}"/>
-                                </h4>
-                                <h4 class="card-title mt-0 ">
-                                    Name: <span th:text="${customer.name}"/></h4>
-                                <h4 class="card-title mt-0 ">
-                                    Address: <span th:text="${customer.address}"/></h4>
-
-                            </div>
-                            <div class="card-footer">
-                                <div class="media">
-                                    <div class="media-body">
-                                            <a th:href="@{/updateProfile}" class="btn btn-primary my-0 text-white d-block">Update</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Details of <span th:text="${customer.name}"/>
+                    </div>
+                    <div class="card-body">
+                        <h4>User Name: <span th:text="${customer.username}"/></h4>
+                        <h4>Name: <span th:text="${customer.name}"/></h4>
+                        <h4>Address: <span th:text="${customer.address}"/></h4>
+                    </div>
+                    <div class="card-footer">
+                        <a th:href="@{/updateProfile}" class="btn btn-primary my-0 text-white d-block">Update</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
+        
 
     <h3 class="mb-2"></h3>
 
