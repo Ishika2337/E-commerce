@@ -69,11 +69,11 @@
 <div class="product-container">
     <div class="product" th:each="order: ${orders}">
         <div class="img-box">
-            <img class="imgb" th:src="@{${order.dresses.dressUrl}}" alt="">
+            <img class="imgb" th:src="@{${order.dressUrl}}" alt="">
         </div>
         <div class="info">
-            <h4>Brand <span th:text="${order.dresses.brand}"/></h4>
-            <div class="price">₹<b th:text="${order.dresses.cost}"></b></div>
+            <h4>Brand <span th:text="${order.brand}"/></h4>
+            <div class="price">₹<b th:text="${order.cost}"></b></div>
         </div>
         <div class="info">
             <h5>Booked and Delivered within 2 days</h5>

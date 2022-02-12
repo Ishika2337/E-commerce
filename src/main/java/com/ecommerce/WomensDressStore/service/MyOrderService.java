@@ -23,15 +23,6 @@ public class MyOrderService {
     public void remove(Long id) {
         myOrderRepository.deleteById(id);
     }
-    public void removeByDressesId(Long id) {
-        myOrderRepository.deleteByDressesId(id);
-    }
-    public boolean existsByDressesId(Long id) {
-        return myOrderRepository.existsByDressesId(id);
-    }
 
-    public MyOrder findByDressesId(Long id) {
-        return myOrderRepository.findByDressesId(id);
-    }
 
 }
