@@ -43,7 +43,9 @@ public class MyOrderController {
         Customer customer = customerService.getByUsername(principal.getName());
         model.addAttribute("dress", dresses);
         MyOrder myOrder = new MyOrder();
-        myOrder.setDresses(dresses);
+        myOrder.setBrand(dresses.getBrand());
+        myOrder.setDressUrl(dresses.getDressUrl());
+        myOrder.setCost(dresses.getCost());
         myOrder.setCustomer(customer);
         myOrderService.addToMyOrder(myOrder);
         return "redirect:/myOrder";

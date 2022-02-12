@@ -71,9 +71,6 @@ public class DressesController {
         if (cartService.existsByDressesId(id)){
             cartService.removeByDressesId(id);
         }
-        if (myOrderService.existsByDressesId(id)){
-            myOrderService.removeByDressesId(id);
-        }
         dressesService.remove(id);
         return "redirect:/allDresses";
     }

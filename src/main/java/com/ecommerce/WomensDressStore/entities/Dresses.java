@@ -17,8 +17,6 @@ public class Dresses {
     private String dressType;
     @OneToMany(mappedBy = "dresses")
     private List<Cart> cart;
-    @OneToMany(mappedBy = "dresses")
-    private List<MyOrder> myOrders;
 
     public Dresses(String brand, String dressUrl, Double cost, String type) {
         this.brand = brand;
@@ -28,14 +26,6 @@ public class Dresses {
     }
 
     public Dresses() {
-    }
-
-    public List<MyOrder> getOrders() {
-        return myOrders;
-    }
-
-    public void setOrders(List<MyOrder> myOrders) {
-        this.myOrders = myOrders;
     }
 
     public List<Cart> getCart() {

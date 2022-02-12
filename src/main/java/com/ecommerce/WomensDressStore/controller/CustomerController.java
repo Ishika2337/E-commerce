@@ -47,7 +47,7 @@ public class CustomerController {
         }
         if (!customerService.existsByUsername(username)){
             customerService.createCustomer(customer);
-        }else {
+        } else {
             model.addAttribute("error","Username already taken please choose another username");
             return "registration";
         }
