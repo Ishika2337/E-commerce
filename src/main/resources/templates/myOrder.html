@@ -72,6 +72,9 @@
             <img class="imgb" th:src="@{${order.dressUrl}}" alt="">
         </div>
         <div class="info">
+            <h4><span th:text="${order.name}"/></h4>
+        </div>
+        <div class="info">
             <h4>Brand <span th:text="${order.brand}"/></h4>
             <div class="price">₹<b th:text="${order.cost}"></b></div>
         </div>

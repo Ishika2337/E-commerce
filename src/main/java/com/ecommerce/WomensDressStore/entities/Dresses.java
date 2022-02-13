@@ -15,17 +15,27 @@ public class Dresses {
     private String dressUrl;
     private Double cost;
     private String dressType;
+    private String name;
     @OneToMany(mappedBy = "dresses")
     private List<Cart> cart;
 
-    public Dresses(String brand, String dressUrl, Double cost, String type) {
+    public Dresses(String brand, String dressUrl, Double cost, String type, String name) {
         this.brand = brand;
         this.dressUrl = dressUrl;
         this.cost = cost;
         this.dressType = type;
+        this.name = name;
     }
 
     public Dresses() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Cart> getCart() {

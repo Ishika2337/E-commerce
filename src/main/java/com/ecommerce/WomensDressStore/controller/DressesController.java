@@ -37,7 +37,8 @@ public class DressesController {
         String brand = request.getParameter("brand");
         String dressUrl = request.getParameter("dressUrl");
         Double cost = Double.parseDouble(request.getParameter("cost"));
-        Dresses dresses = new Dresses(brand, dressUrl, cost, dressType);
+        String name = request.getParameter("name");
+        Dresses dresses = new Dresses(brand, dressUrl, cost, dressType,name);
         dressesService.save(dresses);
         model.addAttribute("msg", "added");
         return "addDresses";
@@ -62,6 +63,7 @@ public class DressesController {
         dresses.setBrand(request.getParameter("brand"));
         dresses.setCost(Double.parseDouble(request.getParameter("cost")));
         dresses.setDressType(request.getParameter("dressType"));
+        dresses.setName(request.getParameter("name"));
         dressesService.save(dresses);
         return "redirect:/allDresses";
     }

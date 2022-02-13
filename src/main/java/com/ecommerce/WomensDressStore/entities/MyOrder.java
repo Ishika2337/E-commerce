@@ -15,6 +15,7 @@ public class MyOrder {
     private String brand;
     private String dressUrl;
     private Double cost;
+    private String name;
     @JsonIgnore
     @ManyToOne
     private Customer customer;
@@ -22,10 +23,19 @@ public class MyOrder {
     public MyOrder() {
     }
 
-    public MyOrder(String brand, String dressUrl, Double cost) {
+    public MyOrder(String brand, String dressUrl, Double cost, String name) {
         this.brand = brand;
         this.dressUrl = dressUrl;
         this.cost = cost;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getBrand() {

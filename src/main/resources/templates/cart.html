@@ -72,6 +72,9 @@
             <img class="imgb" th:src="@{${cart.dresses.dressUrl}}" alt="">
         </div>
         <div class="info">
+            <h4><span th:text="${cart.dresses.name}"/></h4>
+        </div>
+        <div class="info">
             <h4>Brand <span th:text="${cart.dresses.brand}"/></h4>
             <div class="price">₹<b th:text="${cart.dresses.cost}"></b></div>
         </div>

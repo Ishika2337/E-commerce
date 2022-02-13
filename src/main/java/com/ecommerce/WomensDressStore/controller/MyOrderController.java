@@ -42,7 +42,7 @@ public class MyOrderController {
         Dresses dresses = dressesService.getById(id);
         Customer customer = customerService.getByUsername(principal.getName());
         model.addAttribute("dress", dresses);
-        MyOrder myOrder = new MyOrder(dresses.getBrand(),dresses.getDressUrl(),dresses.getCost());
+        MyOrder myOrder = new MyOrder(dresses.getBrand(),dresses.getDressUrl(),dresses.getCost(),dresses.getName());
         myOrder.setCustomer(customer);
         myOrderService.addToMyOrder(myOrder);
         return "redirect:/successfullyBooked";
