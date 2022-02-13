@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 
 @Controller
@@ -30,10 +31,11 @@ public class MyOrderController {
             model.addAttribute("username", username);
         }
         model.addAttribute("dress",dressesService.getById(id));
+        model.addAttribute("customer",customerService.getByUsername(principal.getName()));
         return "pay";
     }
     @GetMapping("/pay/{id}")
-    public String pay(Principal principal, @PathVariable Long id, Model model) {
+    public String pay(Principal principal, @PathVariable Long id, Model model, HttpServletRequest request) {
         if (principal != null) {
             String username = principal.getName();
             model.addAttribute("username", username);
@@ -42,7 +44,8 @@ public class MyOrderController {
         Dresses dresses = dressesService.getById(id);
         Customer customer = customerService.getByUsername(principal.getName());
         model.addAttribute("dress", dresses);
-        MyOrder myOrder = new MyOrder(dresses.getBrand(),dresses.getDressUrl(),dresses.getCost(),dresses.getName());
+        String deliveringAddress = request.getParameter("address");
+        MyOrder myOrder = new MyOrder(dresses.getBrand(),dresses.getDressUrl(),dresses.getCost(),dresses.getName(),deliveringAddress);
         myOrder.setCustomer(customer);
         myOrderService.addToMyOrder(myOrder);
         return "redirect:/successfullyBooked";
