@@ -12,6 +12,7 @@ public class Customer {
     private String username;
     private String name;
     private String address;
+    private Long phoneNumber;
     @Column(unique = true)
     private String password;
     private String roles;
@@ -24,12 +25,29 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String username, String name, String address, String password, String roles) {
+    public Customer(String username, String name, String address, String password, Long phoneNumber, String roles) {
         this.username = username;
         this.name = name;
         this.address = address;
         this.password = password;
+        this.phoneNumber = phoneNumber;
         this.roles = roles;
+    }
+
+    public Long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public List<MyOrder> getMyOrders() {
+        return myOrders;
+    }
+
+    public void setMyOrders(List<MyOrder> myOrders) {
+        this.myOrders = myOrders;
     }
 
     public List<MyOrder> getOrders() {

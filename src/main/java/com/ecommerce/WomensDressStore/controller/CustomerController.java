@@ -39,11 +39,12 @@ public class CustomerController {
         String name = request.getParameter("name");
         String address = request.getParameter("address");
         String password = request.getParameter("password");
+        Long phoneNumber = Long.parseLong(request.getParameter("phoneNumber"));
         Customer customer;
         if (username.equals("admin")) {
-            customer = new Customer(username, name, address, password, "ROLE_ADMIN");
+            customer = new Customer(username, name, address, password, phoneNumber, "ROLE_ADMIN");
         } else {
-            customer = new Customer(username, name, address, password, "ROLE_USER");
+            customer = new Customer(username, name, address, password, phoneNumber, "ROLE_USER");
         }
         if (!customerService.existsByUsername(username)){
             customerService.createCustomer(customer);
@@ -103,6 +104,7 @@ public class CustomerController {
         customer.setName(request.getParameter("name"));
         customer.setAddress(request.getParameter("address"));
         customer.setPassword(request.getParameter("password"));
+        customer.setPhoneNumber(Long.parseLong(request.getParameter("phoneNumber")));
         customerService.createCustomer(customer);
         return "redirect:/profile";
     }

@@ -60,15 +60,15 @@
       <span th:text="${msg}"/>
       <div class="mb-3 mt-3">
         <label for="dressUrl" class="form-label">Dress</label>
-        <input type="text" class="form-control" id="dressUrl" placeholder="Enter dress" name="dressUrl" th:value="${dress.dressUrl}" />
+        <input type="text" class="form-control" id="dressUrl" placeholder="Enter dress" name="dressUrl" th:value="${dress.dressUrl}" required />
       </div>
       <div class="mb-3">
         <label for="brand" class="form-label">Brand:</label>
-        <input type="text" class="form-control" id="brand" placeholder="Enter brand" name="brand" th:value="${dress.brand}" />
+        <input type="text" class="form-control" id="brand" placeholder="Enter brand" name="brand" th:value="${dress.brand}" required />
       </div>
       <div class="mb-3">
         <label for="cost" class="form-label">Cost:</label>
-        <input type="text" class="form-control" id="cost" placeholder="Enter address" name="cost" th:value="${dress.cost}">
+        <input type="text" class="form-control" id="cost" placeholder="Enter address" name="cost" th:value="${dress.cost}" required />
       </div>
       <div class="mb-3">
         <label for="dressType">Choose a Type:</label>
