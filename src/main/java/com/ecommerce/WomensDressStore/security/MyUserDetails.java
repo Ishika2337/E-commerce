@@ -15,18 +15,7 @@ public class MyUserDetails implements UserDetails {
     private final String username;
     private final String password;
     private final String roles;
-//    private List<GrantedAuthority> authorities;
 
-
-//    public MyUserDetails() {
-//    }
-//    public MyUserDetails(Customer user) {
-//        this.username = user.getUsername();
-//        this.password = user.getPassword();
-//        this.authorities = Arrays.stream(user.getRoles().split(","))
-//                .map(SimpleGrantedAuthority::new)
-//                .collect(Collectors.toList());
-//    }
     public MyUserDetails(Customer user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
