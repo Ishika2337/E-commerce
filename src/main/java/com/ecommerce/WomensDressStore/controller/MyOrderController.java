@@ -28,7 +28,8 @@ public class MyOrderController {
     public String buy(Principal principal,Model model, @PathVariable Long id){
         if (principal != null) {
             String username = principal.getName();
-            model.addAttribute("username", username);
+            Customer customer = customerService.getByUsername(username);
+            model.addAttribute("username", customer.getName());
         }
         model.addAttribute("dress",dressesService.getById(id));
         model.addAttribute("customer",customerService.getByUsername(principal.getName()));
@@ -38,8 +39,8 @@ public class MyOrderController {
     public String pay(Principal principal, @PathVariable Long id, Model model, HttpServletRequest request) {
         if (principal != null) {
             String username = principal.getName();
-            model.addAttribute("username", username);
-
+            Customer customer = customerService.getByUsername(username);
+            model.addAttribute("username", customer.getName());
         }
         Dresses dresses = dressesService.getById(id);
         Customer customer = customerService.getByUsername(principal.getName());
@@ -54,7 +55,8 @@ public class MyOrderController {
     public String booked(Principal principal, Model model){
         if (principal != null) {
             String username = principal.getName();
-            model.addAttribute("username", username);
+            Customer customer = customerService.getByUsername(username);
+            model.addAttribute("username", customer.getName());
         }
         Customer customer = customerService.getByUsername(principal.getName());
         model.addAttribute("name", customer.getName());
@@ -64,7 +66,8 @@ public class MyOrderController {
     public String myOrder(Principal principal, Model model){
         if (principal != null) {
             String username = principal.getName();
-            model.addAttribute("username", username);
+            Customer customer = customerService.getByUsername(username);
+            model.addAttribute("username", customer.getName());
         }
         model.addAttribute("orders",myOrderService.myOrders(principal.getName()));
         return "myOrder";
@@ -74,7 +77,8 @@ public class MyOrderController {
     public String cancelOrder(@PathVariable Long id,Model model, Principal principal){
         if (principal != null) {
             String username = principal.getName();
-            model.addAttribute("username", username);
+            Customer customer = customerService.getByUsername(username);
+            model.addAttribute("username", customer.getName());
         }
         myOrderService.remove(id);
         return "redirect:/myOrder";

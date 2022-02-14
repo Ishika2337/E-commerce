@@ -78,7 +78,8 @@ public class CustomerController {
     public String profile(Principal principal, Model model) {
         if (principal != null) {
             String username = principal.getName();
-            model.addAttribute("username", username);
+            Customer customer = customerService.getByUsername(username);
+            model.addAttribute("username", customer.getName());
         }
         model.addAttribute("customer", customerService.getByUsername(principal.getName()));
         return "profile";
@@ -89,7 +90,8 @@ public class CustomerController {
     public String updateProfileForm(Principal principal, Model model) {
         if (principal != null) {
             String username = principal.getName();
-            model.addAttribute("username", username);
+            Customer customer = customerService.getByUsername(username);
+            model.addAttribute("username", customer.getName());
         }
         model.addAttribute("customer", customerService.getByUsername(principal.getName()));
         return "updateProfile";
@@ -99,7 +101,8 @@ public class CustomerController {
     public String updateProfile(Principal principal, Model model, HttpServletRequest request) {
         if (principal != null) {
             String username = principal.getName();
-            model.addAttribute("username", username);
+            Customer customer = customerService.getByUsername(username);
+            model.addAttribute("username", customer.getName());
         }
         Customer customer = customerService.getByUsername(principal.getName());
         customer.setName(request.getParameter("name"));
@@ -114,7 +117,8 @@ public class CustomerController {
     public String showDresses(Principal principal, Model model) {
         if (principal != null) {
             String username = principal.getName();
-            model.addAttribute("username", username);
+            Customer customer = customerService.getByUsername(username);
+            model.addAttribute("username", customer.getName());
         }
         return "showdresses";
     }

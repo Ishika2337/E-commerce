@@ -1,9 +1,11 @@
 package com.ecommerce.WomensDressStore.controller;
 
 import com.ecommerce.WomensDressStore.entities.Cart;
+import com.ecommerce.WomensDressStore.entities.Customer;
 import com.ecommerce.WomensDressStore.entities.Dresses;
 import com.ecommerce.WomensDressStore.entities.MyOrder;
 import com.ecommerce.WomensDressStore.service.CartService;
+import com.ecommerce.WomensDressStore.service.CustomerService;
 import com.ecommerce.WomensDressStore.service.DressesService;
 import com.ecommerce.WomensDressStore.service.MyOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,8 @@ public class DressesController {
     private CartService cartService;
     @Autowired
     private MyOrderService myOrderService;
+    @Autowired
+    private CustomerService customerService;
 
     @GetMapping("/addDresses")
     public String addDressesForm() {
@@ -81,7 +85,8 @@ public class DressesController {
     public String indianWear(Principal principal,Model model) {
         if (principal != null) {
             String username = principal.getName();
-            model.addAttribute("username", username);
+            Customer customer = customerService.getByUsername(username);
+            model.addAttribute("username", customer.getName());
         }
         model.addAttribute("indianWear", dressesService.findByDressType("indianWear"));
         return "indianWear";
@@ -91,7 +96,8 @@ public class DressesController {
     public String westernWear(Principal principal,Model model) {
         if (principal != null) {
             String username = principal.getName();
-            model.addAttribute("username", username);
+            Customer customer = customerService.getByUsername(username);
+            model.addAttribute("username", customer.getName());
         }
         model.addAttribute("westernWear", dressesService.findByDressType("westernWear"));
         return "westernWear";

@@ -25,7 +25,8 @@ public class CartController {
     public String cart(Principal principal, @PathVariable Long id, Model model) {
         if (principal != null) {
             String username = principal.getName();
-            model.addAttribute("username", username);
+            Customer customer = customerService.getByUsername(username);
+            model.addAttribute("username", customer.getName());
         }
         Dresses dresses = dressesService.getById(id);
         Customer customer = customerService.getByUsername(principal.getName());
@@ -40,7 +41,8 @@ public class CartController {
     public String myCart(Principal principal, Model model){
         if (principal != null) {
             String username = principal.getName();
-            model.addAttribute("username", username);
+            Customer customer = customerService.getByUsername(username);
+            model.addAttribute("username", customer.getName());
         }
         model.addAttribute("myCart",cartService.myCart(principal.getName()));
         return "cart";
@@ -49,7 +51,8 @@ public class CartController {
     public String removeFromCart(@PathVariable Long cartId, Model model, Principal principal){
         if (principal != null) {
             String username = principal.getName();
-            model.addAttribute("username", username);
+            Customer customer = customerService.getByUsername(username);
+            model.addAttribute("username", customer.getName());
         }
         cartService.remove(cartId);
         return "redirect:/cart";
