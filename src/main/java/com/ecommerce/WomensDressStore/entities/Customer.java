@@ -12,8 +12,9 @@ public class Customer {
     private String username;
     private String name;
     private String address;
+    @Column(nullable = false)
     private Long phoneNumber;
-    @Column(unique = true)
+    @Column(nullable = false)
     private String password;
     private String roles;
 
