@@ -79,7 +79,7 @@
             </div>
             <div class="mb-3">
                 <label for="phoneNumber" class="form-label">Address:</label>
-                <input type="tel" class="form-control" id="phoneNumber" placeholder="Update Phone Number" name="phoneNumber" th:value="${customer.phoneNumber}" required />
+                <input type="tel" class="form-control" id="phoneNumber" placeholder="Update Phone Number" name="phoneNumber" th:value="${customer.phoneNumber}" pattern="^\d{10}$" required />
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Reset Password:</label>
