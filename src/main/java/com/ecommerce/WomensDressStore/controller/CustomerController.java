@@ -53,7 +53,9 @@ public class CustomerController {
             model.addAttribute("error","Username already taken please choose another username");
             return "registration";
         }
-
+        if (username.equals("admin")){
+            return "redirect:/addDresses";
+        }
         return "redirect:/showdresses";
     }
 

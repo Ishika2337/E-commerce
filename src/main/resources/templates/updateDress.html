@@ -56,7 +56,7 @@
 
   <div class="signin-form">
     <h4 class="d-flex justify-content-center">Update Dress</h4>
-    <form th:action="@{/{id}/update (id=${dress.id})}" method="post">
+    <form th:action="@{/dress/update/{id} (id=${dress.id})}" method="post">
       <span th:text="${msg}"/>
       <div class="mb-3 mt-3">
         <label for="dressUrl" class="form-label">Dress</label>
@@ -72,7 +72,7 @@
       </div>
       <div class="mb-3">
         <label for="cost" class="form-label">Cost:</label>
-        <input type="text" class="form-control" id="cost" placeholder="Enter address" name="cost" th:value="${dress.cost}" required />
+        <input type="number" class="form-control" id="cost" placeholder="Enter address" name="cost" th:value="${dress.cost}" required />
       </div>
       <div class="mb-3">
         <label for="dressType">Choose a Type:</label>

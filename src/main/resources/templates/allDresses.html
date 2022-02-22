@@ -42,10 +42,6 @@
         <li class="nav-item">
             <a class="nav-link" href="/"><span class="fa fa-home"> Home</span></a>
         </li>
-
-        <!--        <li class="nav-item">-->
-        <!--            <a class="nav-link active" href="/showdress">Show Dresses</a>-->
-        <!--        </li>-->
         <li class="nav-item">
             <a class="nav-link" href="/addDresses"><span class="fa"> Add Dress</span></a>
         </li>
@@ -70,8 +66,8 @@
             <div class="price">₹<b th:text="${dress.cost}"></b></div>
         </div>
         <div class="info">
-            <a th:href="@{/update/{id} (id=${dress.id})}" class="btn btn-success">Update</a>
-            <a th:href="@{/{id}/delete (id=${dress.id})}" class="btn btn-success">Delete</a>
+            <a th:href="@{/dress/update/{id} (id=${dress.id})}" class="btn btn-success">Update</a>
+            <a th:href="@{/dress/delete/{id} (id=${dress.id})}" class="btn btn-success">Delete</a>
         </div>
     </div>
 
